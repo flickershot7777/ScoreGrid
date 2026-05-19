@@ -1,0 +1,301 @@
+/* =============================================
+   Header Component
+   ============================================= */
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--header-height);
+  z-index: 50;
+  background: transparent;
+  transition: all var(--transition-base);
+}
+
+.header--scrolled {
+  background: rgba(10, 10, 26, 0.85);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-md);
+}
+
+.header__container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+/* Logo */
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  z-index: 10;
+}
+
+.header__logo-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-md);
+  color: white;
+}
+
+.header__logo-text {
+  font-size: var(--font-size-xl);
+  font-weight: 800;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Nav */
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.header__link {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.header__link:hover {
+  color: var(--text-primary);
+  background: var(--bg-glass);
+}
+
+.header__link.active {
+  color: var(--primary-300);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.header__link--admin {
+  color: var(--warning-400);
+}
+
+.header__link--admin.active {
+  color: var(--warning-400);
+  background: rgba(245, 158, 11, 0.1);
+}
+
+/* Actions */
+.header__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* User dropdown */
+.header__user {
+  position: relative;
+}
+
+.header__avatar-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  padding: var(--space-1) var(--space-3) var(--space-1) var(--space-1);
+  transition: all var(--transition-fast);
+  color: var(--text-primary);
+}
+
+.header__avatar-btn:hover {
+  border-color: var(--border-color-hover);
+  background: var(--bg-glass-hover);
+}
+
+.header__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+  color: white;
+}
+
+.header__chevron {
+  transition: transform var(--transition-fast);
+}
+
+.header__chevron.open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.header__dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2);
+  box-shadow: var(--shadow-lg);
+  animation: slideDown 0.2s ease;
+  z-index: 60;
+}
+
+.header__dropdown-header {
+  padding: var(--space-3) var(--space-3);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__dropdown-email {
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 150px;
+}
+
+.header__dropdown-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: var(--space-1) 0;
+}
+
+.header__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+  width: 100%;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+}
+
+.header__dropdown-item:hover {
+  background: var(--bg-glass);
+  color: var(--text-primary);
+}
+
+.header__dropdown-item--danger {
+  color: var(--danger-400);
+}
+
+.header__dropdown-item--danger:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: var(--danger-400);
+}
+
+/* Hamburger */
+.header__hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  padding: 8px;
+  z-index: 10;
+}
+
+.header__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--text-primary);
+  border-radius: 2px;
+  transition: all var(--transition-fast);
+}
+
+.header__hamburger.open span:nth-child(1) {
+  transform: rotate(45deg) translateY(5px) translateX(5px);
+}
+
+.header__hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.header__hamburger.open span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-5px) translateX(5px);
+}
+
+/* Mobile menu */
+.header__mobile-menu {
+  display: none;
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--bg-primary);
+  padding: var(--space-6);
+  flex-direction: column;
+  gap: var(--space-2);
+  animation: fadeIn 0.2s ease;
+  z-index: 40;
+}
+
+.header__mobile-link {
+  display: block;
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-lg);
+  font-weight: 500;
+  color: var(--text-secondary);
+  background: none;
+  border: none;
+  text-align: left;
+  width: 100%;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.header__mobile-link:hover {
+  background: var(--bg-glass);
+  color: var(--text-primary);
+}
+
+.header__mobile-link--danger {
+  color: var(--danger-400);
+}
+
+.header__mobile-link--primary {
+  background: var(--gradient-primary);
+  color: white;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 768px) {
+  .header__nav {
+    display: none;
+  }
+
+  .header__hamburger {
+    display: flex;
+  }
+
+  .header__mobile-menu {
+    display: flex;
+  }
+}

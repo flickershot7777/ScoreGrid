@@ -1,0 +1,31 @@
+/* Admin Dashboard */
+.admin { padding: var(--space-10) 0; animation: fadeIn 0.4s ease; }
+.admin__header { margin-bottom: var(--space-10); }
+.admin__header h1 { font-size: var(--font-size-3xl); font-weight: 800; margin-bottom: var(--space-2); }
+.admin__header p { color: var(--text-secondary); }
+
+.admin__stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-5); margin-bottom: var(--space-10); }
+
+.admin__stat-card { padding: var(--space-6); display: flex; align-items: center; gap: var(--space-5); }
+.admin__stat-icon { font-size: 32px; }
+.admin__stat-value { display: block; font-size: var(--font-size-2xl); font-weight: 800; }
+.admin__stat-label { font-size: var(--font-size-sm); color: var(--text-muted); }
+
+.admin__stat-card--primary .admin__stat-value { color: var(--primary-300); }
+.admin__stat-card--accent .admin__stat-value { color: var(--accent-400); }
+.admin__stat-card--success .admin__stat-value { color: var(--success-400); }
+.admin__stat-card--warning .admin__stat-value { color: var(--warning-400); }
+
+.admin__actions-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--space-6); }
+
+.admin__action-card { padding: var(--space-8); display: flex; flex-direction: column; gap: var(--space-3); transition: all var(--transition-base); }
+.admin__action-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-glow); }
+.admin__action-icon { font-size: 36px; }
+.admin__action-card h3 { font-size: var(--font-size-lg); font-weight: 700; }
+.admin__action-card p { font-size: var(--font-size-sm); color: var(--text-secondary); }
+.admin__action-link { font-size: var(--font-size-sm); font-weight: 600; color: var(--primary-400); margin-top: auto; }
+
+@media (max-width: 768px) {
+  .admin__stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .admin__actions-grid { grid-template-columns: 1fr; }
+}
